@@ -58,7 +58,7 @@ function startQuiz(){
     score = 0;
     nextButton.innerHTML = "Next";
     showQuestion();
-   
+    startTimer();
 }
 function showQuestion(){
     resetState();
@@ -129,32 +129,30 @@ nextButton.addEventListener("click", (event)=>{
 
     }
 });
+
+
+const countdownElement = document.getElementById("countdown");
+const timerElement = document.getElementById("timer");
+
+const totalSeconds = 15;
+let secondsRemaining = totalSeconds;
+let countdownInterval;
+
+function startTimer() {
+    countdownInterval = setInterval(() => {
+        countdownElement.textContent = secondsRemaining;
+
+        if (secondsRemaining <= 0) {
+            clearInterval(countdownInterval);
+            showScore(); 
+        }
+
+        secondsRemaining--;
+    }, 1000); 
+};
 startQuiz();
-// const countdownElement = document.getElementById("countdown");
-// const timerElement = document.getElementById("timer");
 
-// const totalSeconds = 60;
-// let secondsRemaining = totalSeconds;
-// let countdownInterval;
 
-// function startTimer() {
-//     countdownInterval = setInterval(() => {
-//         countdownElement.textContent = secondsRemaining;
-
-//         if (secondsRemaining <= 0) {
-//             clearInterval(countdownInterval);
-//             showScore(); 
-//         }
-
-//         secondsRemaining--;
-//     }, 1000); 
-// }
-
-// function startQuiz() {
-    
-//     startTimer();
-// }
-// startQuiz();
 
 
 
